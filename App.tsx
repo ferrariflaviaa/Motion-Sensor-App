@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {View, StyleSheet, Image, TouchableOpacity} from 'react-native';
 import imagexOff from './assets/icons/eco-light-off.png';
 import imagex from './assets/icons/eco-light.png';
@@ -6,11 +6,15 @@ import logoWhite from './assets/icons/logo-dio-white.png';
 import logo from './assets/icons/logo-dio.png';
 
 const App = () => {
-  const toggle = false;
+  const [toggle, setToggle] = useState(true);
+  const onPressHandler = () => {
+    console.log('tese');
+    setToggle(!toggle); // Alternar o estado entre true e false
+  };
 
   return (
     <View style={toggle ? style.containerLight : style.container}>
-      <TouchableOpacity onPress={() => {}}>
+      <TouchableOpacity onPress={onPressHandler}>
         <Image
           style={toggle ? style.lightingOn : style.lightingOff}
           source={toggle ? imagex : imagexOff}
